@@ -3,7 +3,7 @@
 buildscript {
     apply from: "versions.gradle"
     repositories {
-        maven { url "http://dev.ehking.com:10000/nexus/content/repositories/jcenter" }
+        maven { url "http://localhost:10000/nexus/content/repositories/jcenter" }
         jcenter()
     }
     dependencies {
@@ -14,7 +14,7 @@ buildscript {
 
 allprojects {
     repositories {
-        maven { url "http://dev.ehking.com:10000/nexus/content/repositories/jcenter" }
+        maven { url "http://localhost:10000/nexus/content/repositories/jcenter" }
         jcenter()
     }
 }
