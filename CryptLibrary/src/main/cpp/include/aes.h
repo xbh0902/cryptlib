@@ -76,9 +76,5 @@ public:
 
     int Decrypt(unsigned char *input, int length, unsigned char *output);
 };
-
-
-#endif
-
 #endif //CRYPTLIB_AES_H
 

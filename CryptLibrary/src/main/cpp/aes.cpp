@@ -3,7 +3,6 @@
 //
 
 #include "aes.h"
-#include <cstdio>
 #include <cstring>
 #include <cassert>
 
