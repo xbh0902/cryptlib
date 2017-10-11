@@ -403,12 +403,6 @@ int AESModeOfOperation::Encrypt(unsigned char *_in, int _length, unsigned char *
             //memset(input,0,16);
             memcpy(input, output, 16);
         } else if (m_mode == MODE_CBC) {            // MODE_CBC
-            printf("-----plaintext------");
-            print(plaintext, 16);
-            printf("--------------------\n");
-//			printf("-----m_iv-----------\n");
-//			print (m_iv, 16);
-//			printf("--------------------\n");
             for (int i = 0; i < 16; ++i) {
                 if (first_round == true) {
                     input[i] = plaintext[i] ^ m_iv[i];
@@ -417,13 +411,7 @@ int AESModeOfOperation::Encrypt(unsigned char *_in, int _length, unsigned char *
                 }
             }
             first_round = false;
-//			printf("^^^^^^^^^^^^\n");
-//			print(input, 16);
-//			printf("^^^^^^^^^^^^\n");
             m_aes->Cipher(input, ciphertext);
-            printf("****ciphertext****");
-            print(ciphertext, 16);
-            printf("************\n");
             for (int k = 0; k < end - start; ++k) {
                 cipherout[co_index++] = ciphertext[k];
             }
@@ -465,7 +453,7 @@ int AESModeOfOperation::Decrypt(unsigned char *_in, int _length, unsigned char *
         memset(ciphertext, 0, 16);
         memcpy(ciphertext, _in + start, end - start);
         if (m_mode == MODE_CFB) {
-            if (first_round = true) {
+            if (first_round == true) {
                 m_aes->Cipher(m_iv, output);
                 first_round = false;
             } else {
@@ -503,13 +491,7 @@ int AESModeOfOperation::Decrypt(unsigned char *_in, int _length, unsigned char *
             }
             memcpy(input, output, 16);
         } else if (m_mode == MODE_CBC) {
-            printf("------ciphertext------");
-            print(ciphertext, 16);
-            printf("----------------------\n");
             m_aes->InvCipher(ciphertext, output);
-            printf("------output------");
-            print(output, 16);
-            printf("----------------------\n");
             for (int i = 0; i < 16; ++i) {
                 if (first_round == true) {
                     plaintext[i] = m_iv[i] ^ output[i];

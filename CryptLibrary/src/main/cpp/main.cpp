@@ -2,7 +2,6 @@
 // Created by lulu on 17-9-27.
 //
 
-#include <aes.h>
 #include "main.h"
 #include "md5.h"
 
@@ -12,12 +11,7 @@ Java_me_xbh_lib_impl_AesImpl_getRandomKey(JNIEnv *env) {
 
     unsigned char* key = NULL;
     unsigned char* input = NULL;
-    unsigned char* output = NULL;
-//
-//    AESModeOfOperation moo;
-//
-//    moo.set_mode(MODE_ECB);
-//    moo.Encrypt(input, sizeof(input), output);
+
     return env->NewStringUTF(MD5("nihao").toStr().c_str());
 }
 

@@ -17,6 +17,10 @@ android {
                 cppFlags ""
             }
         }
+        ndk {
+            moduleName "crypt"
+            abiFilters 'armeabi', 'armeabi-v7a', 'x86', 'x86_64', 'mips64', 'mips', 'arm64-v8a'
+        }
     }
 
     sourceSets {

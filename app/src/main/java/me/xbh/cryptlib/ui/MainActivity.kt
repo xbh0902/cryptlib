@@ -10,7 +10,6 @@ import me.xbh.cryptlib.databinding.ActivityMainBinding
 import me.xbh.lib.CryptManager
 import me.xbh.lib.Md5
 import me.xbh.lib.impl.AesImpl
-import utils.MD5Util
 
 /**
  * Created by lulu on 17-9-27.
@@ -29,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         val text = "wenbin.zhou@ehking.com"
 
         Log.i(TAG, "c_md5=>${Md5.digest(text)}")
-        Log.i(TAG, "j_md5=>${MD5Util.getMD5(text)}")
         Log.i(TAG, "source=>$text")
     }
 
