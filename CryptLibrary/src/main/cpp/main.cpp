@@ -13,11 +13,11 @@ Java_me_xbh_lib_impl_AesImpl_getRandomKey(JNIEnv *env) {
     unsigned char* key = NULL;
     unsigned char* input = NULL;
     unsigned char* output = NULL;
-
-    AESModeOfOperation moo;
-
-    moo.set_mode(MODE_ECB);
-    moo.Encrypt(input, sizeof(input), output);
+//
+//    AESModeOfOperation moo;
+//
+//    moo.set_mode(MODE_ECB);
+//    moo.Encrypt(input, sizeof(input), output);
     return env->NewStringUTF(MD5("nihao").toStr().c_str());
 }
 
