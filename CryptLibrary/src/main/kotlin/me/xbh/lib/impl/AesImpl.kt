@@ -7,7 +7,19 @@ package me.xbh.lib.impl
  */
 class AesImpl{
 
-
+   /**
+    * 获取随机16位密钥
+    */
    external fun getRandomKey() : String
+
+   /**
+    * 加密
+    */
+   external fun encrypt(plainText : String, key: String) : String
+
+   /**
+    * 解密
+    */
+   external fun decrypt(cipherText : String, key: String) : String
 
 }

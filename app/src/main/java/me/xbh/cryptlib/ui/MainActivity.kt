@@ -24,11 +24,18 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         val manager = CryptManager.getInstance()
-        tv_content.text = AesImpl().getRandomKey()
         val text = "wenbin.zhou@ehking.com"
 
         Log.i(TAG, "c_md5=>${Md5.digest(text)}")
-        Log.i(TAG, "source=>$text")
+
+        val aes = AesImpl();
+        var key = aes.getRandomKey()
+        key = "123456789"
+        val cipherText = aes.encrypt(text, key)
+        val plainText = aes.decrypt(cipherText, key)
+        Log.i(TAG, "encrypt=>$cipherText")
+        Log.i(TAG, "decrypt=>$plainText")
+        Log.i(TAG, "key=>$key")
     }
 
 }

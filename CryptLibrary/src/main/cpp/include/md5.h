@@ -1,7 +1,3 @@
-//
-// Created by lulu on 17-9-27.
-//
-
 #ifndef CRYPTLIB_MD5_H
 #define CRYPTLIB_MD5_H
 
