@@ -2,7 +2,6 @@
 #include "md5.h"
 #include "random_tool.h"
 #include "aes.h"
-using namespace crypt;
 
 JNIEXPORT jstring JNICALL
 Java_me_xbh_lib_impl_AesImpl_getRandomKey(JNIEnv *env) {

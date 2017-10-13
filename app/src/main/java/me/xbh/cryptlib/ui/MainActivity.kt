@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         val manager = CryptManager.getInstance()
-        val text = "{name:\"你好啊，我不好！你真的ok吗？\", age:12}"
+        val text = "{name:\"你好啊，我不好！你真的ok吗？\", age:120}"
 
         Log.i(TAG, "c_md5=>${Md5.digest(text)}")
 

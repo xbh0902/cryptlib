@@ -1,5 +1,5 @@
 #include "base64.h"
-using namespace crypt;
+
 const char *Base64::table = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 byte Base64::rtable[123];
 int trick = Base64::init_rtable();
