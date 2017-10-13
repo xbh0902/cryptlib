@@ -1,12 +1,12 @@
-#include <aes_helper.h>
 #include "main.h"
 #include "md5.h"
 #include "random_tool.h"
-
+#include "aes.h"
+using namespace crypt;
 
 JNIEXPORT jstring JNICALL
 Java_me_xbh_lib_impl_AesImpl_getRandomKey(JNIEnv *env) {
-    return env->NewStringUTF(generateAlphaAndDigit(KEYCODELENGTH).c_str());
+    return env->NewStringUTF(generateAlphaAndDigit(16).c_str());
 }
 
 JNIEXPORT jstring JNICALL
@@ -16,14 +16,16 @@ Java_me_xbh_lib_Md5_digest(JNIEnv *env, jclass clazz, jstring plainText) {
 
 JNIEXPORT jstring JNICALL
 Java_me_xbh_lib_impl_AesImpl_encrypt(JNIEnv *env, jclass clazz, jstring plainText, jstring key){
-    CAesHelper helper;
-    string result = helper.Encrypt(env->GetStringUTFChars(plainText, NULL), env->GetStringUTFChars(key, NULL));
+
+    AES aes((const byte *) env->GetStringUTFChars(key, NULL));
+    string result = aes.encrypt(env->GetStringUTFChars(plainText, NULL));
     return env->NewStringUTF(result.c_str());
 }
 
 JNIEXPORT jstring JNICALL
 Java_me_xbh_lib_impl_AesImpl_decrypt(JNIEnv *env, jclass clazz, jstring cipherText, jstring key){
-    CAesHelper helper;
-    string result = helper.Decrypt(env->GetStringUTFChars(cipherText, NULL), env->GetStringUTFChars(key, NULL));
+
+    AES aes((const byte *) env->GetStringUTFChars(key, NULL));
+    string result = aes.decrypt(env->GetStringUTFChars(cipherText, NULL));
     return env->NewStringUTF(result.c_str());
 }

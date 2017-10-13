@@ -1,87 +1,76 @@
 #include "base64.h"
+using namespace crypt;
+const char *Base64::table = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+byte Base64::rtable[123];
+int trick = Base64::init_rtable();
 
-std::string Base64::Encode(const unsigned char *Data, int DataByte) {
-    //编码表
-    const char EncodeTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-    //返回值
-    std::string strEncode;
-    unsigned char Tmp[4] = {0};
-    int LineLength = 0;
-    for (int i = 0; i < (int) (DataByte / 3); i++) {
-        Tmp[1] = *Data++;
-        Tmp[2] = *Data++;
-        Tmp[3] = *Data++;
-        strEncode += EncodeTable[Tmp[1] >> 2];
-        strEncode += EncodeTable[((Tmp[1] << 4) | (Tmp[2] >> 4)) & 0x3F];
-        strEncode += EncodeTable[((Tmp[2] << 2) | (Tmp[3] >> 6)) & 0x3F];
-        strEncode += EncodeTable[Tmp[3] & 0x3F];
-        if (LineLength += 4, LineLength == 76) {
-            strEncode += "\r\n";
-            LineLength = 0;
-        }
+std::string Base64::encode(const std::vector<byte> &bytes)
+{
+    int len = bytes.size();
+    std::string str;
+    for (int i=0; i < len; i+=3) {
+        byte b0 = bytes[i];
+        byte b1 = (i+1 < len) ? bytes[i+1] : 0;
+        byte b2 = (i+2 < len) ? bytes[i+2] : 0;
+        str.push_back(table[b0>>2]);
+        str.push_back(table[((b0&0x3)<<4)|(b1>>4)]);
+        str.push_back(table[((b1&0xf)<<2)|(b2>>6)]);
+        str.push_back(table[b2&0x3f]);
     }
-    //对剩余数据进行编码
-    int Mod = DataByte % 3;
-    if (Mod == 1) {
-        Tmp[1] = *Data++;
-        strEncode += EncodeTable[(Tmp[1] & 0xFC) >> 2];
-        strEncode += EncodeTable[((Tmp[1] & 0x03) << 4)];
-        strEncode += "==";
-    } else if (Mod == 2) {
-        Tmp[1] = *Data++;
-        Tmp[2] = *Data++;
-        strEncode += EncodeTable[(Tmp[1] & 0xFC) >> 2];
-        strEncode += EncodeTable[((Tmp[1] & 0x03) << 4) | ((Tmp[2] & 0xF0) >> 4)];
-        strEncode += EncodeTable[((Tmp[2] & 0x0F) << 2)];
-        strEncode += "=";
+    int slen = str.length();
+    if (len % 3 == 1) {
+        str[slen-1] = '=';
+        str[slen-2] = '=';
+    } else if (len % 3 == 2) {
+        str[slen-1] = '=';
     }
-
-    return strEncode;
+    for (int i=line_width, j=0; i < slen; i+=line_width, j++) {
+        str.insert(i+j, "\n");
+    }
+    return str;
 }
 
-std::string Base64::Decode(const char *Data, int DataByte, int &OutByte) {
-    //解码表
-    const char DecodeTable[] =
-            {
-                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                    62, // '+'
-                    0, 0, 0,
-                    63, // '/'
-                    52, 53, 54, 55, 56, 57, 58, 59, 60, 61, // '0'-'9'
-                    0, 0, 0, 0, 0, 0, 0,
-                    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-                    13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, // 'A'-'Z'
-                    0, 0, 0, 0, 0, 0,
-                    26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
-                    39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, // 'a'-'z'
-            };
-    //返回值
-    std::string strDecode;
-    int nValue;
-    int i = 0;
-    while (i < DataByte) {
-        if (*Data != '\r' && *Data != '\n') {
-            nValue = DecodeTable[*Data++] << 18;
-            nValue += DecodeTable[*Data++] << 12;
-            strDecode += (nValue & 0x00FF0000) >> 16;
-            OutByte++;
-            if (*Data != '=') {
-                nValue += DecodeTable[*Data++] << 6;
-                strDecode += (nValue & 0x0000FF00) >> 8;
-                OutByte++;
-                if (*Data != '=') {
-                    nValue += DecodeTable[*Data++];
-                    strDecode += nValue & 0x000000FF;
-                    OutByte++;
-                }
-            }
-            i += 4;
-        } else// 回车换行,跳过
-        {
-            Data++;
+std::vector<byte> Base64::decode(const std::string &str)
+{
+    int len = str.length();
+    std::vector<byte> result;
+    for (int i = 0; i < len; i += 4) {
+        byte c0 = rtable[(byte) str[i]];
+        byte c1 = rtable[(byte) str[i+1]];
+        byte c2 = rtable[(byte) str[i+2]];
+        byte c3 = rtable[(byte) str[i+3]];
+        result.push_back((c0<<2)|((c1>>4)&0x3));
+        result.push_back((c1<<4)|((c2>>2)&0xf));
+        result.push_back((c2<<6)|(c3&0x3f));
+        if (i+4 < len && str[i+4] == '\n') {
             i++;
         }
     }
-    return strDecode;
+    for (int i=len-1, count=0; i>=0 && count<2; i--) {
+        if (str[i] == '\n') {
+            continue;
+        } else if (str[i] == '=') {
+            result.pop_back();
+            count++;
+        } else {
+            break;
+        }
+    }
+    return result;
+}
+
+int Base64::init_rtable()
+{
+    for (int i = 'A'; i <= 'Z'; i++) {
+        rtable[i] = i-'A';
+    }
+    for (int i = 'a'; i <= 'z'; i++) {
+        rtable[i] = i-'a'+26;
+    }
+    for (int i = '0'; i <= '9'; i++) {
+        rtable[i] = i-'0'+52;
+    }
+    rtable['+'] = 62;
+    rtable['/'] = 63;
+    return 0;
 }

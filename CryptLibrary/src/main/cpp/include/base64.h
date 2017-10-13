@@ -1,15 +1,22 @@
 #ifndef CRYPTLIB_BASE64_H
 #define CRYPTLIB_BASE64_H
 
-
 #include <string>
+#include <vector>
+namespace crypt{
+    typedef unsigned char byte;
 
-class Base64 {
-public:
+    class Base64 {
+    public:
+        static std::string encode(const std::vector<byte> &bytes);
+        static std::vector<byte> decode(const std::string &str);
+        static int init_rtable();
+    private:
+        static int trick;
+        static const int line_width = 76;
+        static const char *table;
+        static byte rtable[123];
+    };
+} //namespace crypt
 
-    std::string Encode(const unsigned char *Data, int DataByte);
-
-    std::string Decode(const char *Data, int DataByte, int &OutByte);
-};
-
-#endif //CRYPTLIB_BASE64_H
+#endif // CRYPTLIB_BASE64_H

@@ -9,4 +9,9 @@
 
 using namespace std;
 
+char *jstring2char(JNIEnv *env, jstring jstr);
+
+jstring char2jstring(JNIEnv *env, jbyteArray byteArray);
+
+jbyteArray char2jbyteArray(JNIEnv *env, const char *bytes);
 #endif //CRYPTLIB_XLIB_H

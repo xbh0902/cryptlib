@@ -10,6 +10,7 @@ import me.xbh.cryptlib.databinding.ActivityMainBinding
 import me.xbh.lib.CryptManager
 import me.xbh.lib.Md5
 import me.xbh.lib.impl.AesImpl
+import java.nio.charset.Charset
 
 /**
  * Created by lulu on 17-9-27.
@@ -24,13 +25,12 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         val manager = CryptManager.getInstance()
-        val text = "wenbin.zhou@ehking.com"
+        val text = "{name:\"你好啊，我不好！你真的ok吗？\", age:12}"
 
         Log.i(TAG, "c_md5=>${Md5.digest(text)}")
 
         val aes = AesImpl();
-        var key = aes.getRandomKey()
-        key = "123456789"
+        val key = aes.getRandomKey()
         val cipherText = aes.encrypt(text, key)
         val plainText = aes.decrypt(cipherText, key)
         Log.i(TAG, "encrypt=>$cipherText")
