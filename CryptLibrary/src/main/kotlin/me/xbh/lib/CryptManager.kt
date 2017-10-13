@@ -1,5 +1,7 @@
 package me.xbh.lib
 
+import java.util.TreeSet
+
 /**
  * Created by lulu on 17-9-27.
  */
@@ -22,5 +24,11 @@ class CryptManager private constructor() {
             }
             return INSTANCE!!
         }
+    }
+
+    fun getKey(crypt: ICrypt): String{
+
+
+        return ""
     }
 }

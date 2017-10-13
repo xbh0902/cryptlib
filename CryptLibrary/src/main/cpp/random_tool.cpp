@@ -30,6 +30,7 @@ string generateAlphaAndDigit(int lenght){
                 data = rand() % 26 + 97;
                 result += data;
                 break;
+            default:break;
         }
         delete[] tmp;
     }
