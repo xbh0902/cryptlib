@@ -22,13 +22,13 @@ extern "C" {
      * AES加密
      */
     JNIEXPORT jstring JNICALL
-    Java_me_xbh_lib_impl_AesImpl_encrypt(JNIEnv *env, jclass clazz, jstring plainText, jstring key);
+    Java_me_xbh_lib_impl_AesImpl_encode(JNIEnv *env, jclass clazz, jstring plainText, jstring key);
 
     /**
      * AES解密
      */
     JNIEXPORT jstring JNICALL
-    Java_me_xbh_lib_impl_AesImpl_decrypt(JNIEnv *env, jclass clazz, jstring cipherText, jstring key);
+    Java_me_xbh_lib_impl_AesImpl_decode(JNIEnv *env, jclass clazz, jstring cipherText, jstring key);
 
     /**
      * 获取RSA公钥

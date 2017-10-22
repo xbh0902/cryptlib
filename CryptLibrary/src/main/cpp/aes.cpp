@@ -77,6 +77,13 @@ const byte AES::RC[ROUNDS] = {0x00, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x
 AES::AES() {
 }
 
+<<<<<<< HEAD
+=======
+AES::AES() {
+
+}
+
+>>>>>>> cb02fa46dbf34b933da245a1b9e7a948b62f9a3a
 void AES::setKey(const byte *key) {
     // AES::ekey = expansion(key);
     expansion(key, ekey);

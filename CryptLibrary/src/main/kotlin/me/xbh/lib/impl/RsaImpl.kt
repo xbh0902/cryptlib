@@ -8,7 +8,7 @@ import java.util.*
  */
 class RsaImpl : ICrypt {
 
-    override fun getKey(obj: Any): String = getPublicKey(obj as Int)
+    override fun getKey(obj: Any?): String = getPublicKey(obj as Int)
 
     override fun encrypt(plain: String, key: String): String = encryptByPublicKey(plain, key)
 

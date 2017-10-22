@@ -5,7 +5,7 @@ package me.xbh.lib
  */
 interface ICrypt {
 
-    fun getKey(obj : Any): String
+    fun getKey(obj : Any?): String
 
     fun encrypt(plain: String, key: String): String
 
