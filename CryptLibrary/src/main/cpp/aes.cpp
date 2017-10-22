@@ -74,8 +74,10 @@ const byte AES::COEF[4] = {0x02, 0x03, 0x01, 0x01};
 const byte AES::COEF_INV[4] = {0x0E, 0x0B, 0x0D, 0x09};
 const byte AES::RC[ROUNDS] = {0x00, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1B, 0x36};
 
+AES::AES() {
+}
 
-AES::AES(const byte *key) {
+void AES::setKey(const byte *key) {
     // AES::ekey = expansion(key);
     expansion(key, ekey);
     for (int i = 0; i < ROUNDS; i++) {

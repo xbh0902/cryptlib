@@ -15,17 +15,21 @@ Java_me_xbh_lib_impl_AesImpl_getRandomKey(JNIEnv *env) {
 
 JNIEXPORT jstring JNICALL
 Java_me_xbh_lib_impl_AesImpl_encrypt(JNIEnv *env, jclass clazz, jstring plainText, jstring key){
-
-    AES aes((const byte *) env->GetStringUTFChars(key, NULL));
-    string result = aes.encrypt(env->GetStringUTFChars(plainText, NULL));
+    AES *aes = NULL;
+    aes = new AES[1];
+    aes->setKey((const byte *) env->GetStringUTFChars(key, NULL));
+    string result = aes->encrypt(env->GetStringUTFChars(plainText, NULL));
+    delete[] aes;
     return env->NewStringUTF(result.c_str());
 }
 
 JNIEXPORT jstring JNICALL
 Java_me_xbh_lib_impl_AesImpl_decrypt(JNIEnv *env, jclass clazz, jstring cipherText, jstring key){
-
-    AES aes((const byte *) env->GetStringUTFChars(key, NULL));
-    string result = aes.decrypt(env->GetStringUTFChars(cipherText, NULL));
+    AES *aes = NULL;
+    aes = new AES[1];
+    aes->setKey((const byte *) env->GetStringUTFChars(key, NULL));
+    string result = aes->decrypt(env->GetStringUTFChars(cipherText, NULL));
+    delete[] aes;
     return env->NewStringUTF(result.c_str());
 }
 
@@ -36,8 +40,6 @@ Java_me_xbh_lib_impl_RsaImpl_getPublicKey(JNIEnv *env, jclass clazz, jint build)
 
 JNIEXPORT jstring JNICALL
 Java_me_xbh_lib_impl_RsaImpl_encryptByPublicKey(JNIEnv *env, jclass clazz, jstring plain, jstring key){
-
-
     return env->NewStringUTF("");
 }
 

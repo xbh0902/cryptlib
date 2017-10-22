@@ -16,7 +16,9 @@ public:
     static const int ENCRYPTION = 0;
     static const int DECRYPTION = 1;
 
-    AES(const byte *key);
+    AES();
+
+    void setKey(const byte *key);
 
     std::string encrypt(const std::string &text);
 
