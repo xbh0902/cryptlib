@@ -19,6 +19,12 @@ extern "C" {
     Java_me_xbh_lib_impl_AesImpl_getRandomKey(JNIEnv *env);
 
     /**
+     * 获取本地密钥
+     */
+    JNIEXPORT jstring JNICALL
+    Java_me_xbh_lib_impl_AesImpl_getLocalKey(JNIEnv *env, jobject thiz, jobject context);
+
+    /**
      * AES加密
      */
     JNIEXPORT jstring JNICALL

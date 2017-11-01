@@ -1,7 +1,7 @@
 #include <rsa.h>
 #include "main.h"
 #include "md5.h"
-#include "random_tool.h"
+#include "keytools.h"
 #include "aes.h"
 
 JNIEXPORT jstring JNICALL
@@ -12,6 +12,11 @@ Java_me_xbh_lib_Md5_digest(JNIEnv *env, jclass clazz, jstring plainText) {
 JNIEXPORT jstring JNICALL
 Java_me_xbh_lib_impl_AesImpl_getRandomKey(JNIEnv *env) {
     return env->NewStringUTF(generateAlphaAndDigit(16).c_str());
+}
+
+JNIEXPORT jstring JNICALL
+Java_me_xbh_lib_impl_AesImpl_getLocalKey(JNIEnv *env, jobject thiz, jobject context){
+    return getLocalKey(env, thiz, context);
 }
 
 JNIEXPORT jstring JNICALL

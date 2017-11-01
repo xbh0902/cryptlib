@@ -11,7 +11,7 @@ set_target_properties(openssl PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/s
 set_target_properties(ssl PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/src/main/cpp/libs/${ANDROID_ABI}/libssl.so)
 
 add_library(
-             crypt
+             ehkingCrypt2
              SHARED
              ${SOURCE_DIR})
 
@@ -24,7 +24,7 @@ find_library(
 
 
 target_link_libraries(
-                       crypt
+                       ehkingCrypt2
                        openssl
                        ssl
                        ${log-lib} )
