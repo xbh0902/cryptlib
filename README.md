@@ -1,6 +1,7 @@
 # Cryptlib
 
-![](https://img.shields.io/badge/release-v1.0.1-brightgreen.svg)
+[![](https://img.shields.io/badge/release-v1.0.1-brightgreen.svg)](https://github.com/xbh0902/cryptlib/releases/tag/v1.0.1)
+
 这是一个c++开发的android使用的加密库，其中包括了AES、RSA、MD5等加密算法的实现。
 
 ## Featrue
