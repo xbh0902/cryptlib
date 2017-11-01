@@ -46,7 +46,7 @@ extern "C" {
      * RSA公钥解密
      */
     JNIEXPORT jstring JNICALL
-    Java_me_xbh_lib_impl_RsaImpl_decryptByPublicKey(JNIEnv *env, jclass clazz, jstring cipher, jstring key);
+    Java_me_xbh_lib_impl_RsaImpl_decryptByPublicKey(JNIEnv *env, jobject thiz, jstring cipher, jstring key);
 
 }
 #endif //CRYPTLIB_MAIN_H

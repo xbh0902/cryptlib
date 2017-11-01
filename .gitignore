@@ -1,8 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
 /.gradle
 /.idea
-/*.iml
-/build
+*.iml
+build/
 /gradlew
 /gradlew.bat
 /gradle/

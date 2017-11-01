@@ -91,15 +91,12 @@ std::string RSAEncrypt::encrypt(std::string plain, std::string key) {
 
 std::string RSAEncrypt::decrypt(std::string cipher, std::string key) {
 
-    int rsa_len;
     RSA *rsa = createRSA(key, 1);
     if (rsa == NULL) {
         return NULL;
     }
-    cipher = "ATkjNKdQRIgzvjbCXNYhKj0o3OWqgi+8i6is5PudJns0E+tGNzFwEQ++yfaq9Ra1Z1d98QKLfzvXlQDbxN7bhAfR5n0IjlG6b73XIOPhXOiEJEKvnn8BUb0cQWuW130OunV+ujnOuzEENY8/nMbpqUlRxV56d3PY9MDF+Y8hikM=";
     std::vector<byte> src_v = Base64::decode(cipher);
     std::string src_str = std::string(src_v.begin(), src_v.end());
-    rsa_len = RSA_size(rsa);
     char *decrypt = NULL;
     decrypt = new char[16];
     int flag = RSA_public_decrypt((int) src_str.size(), (const unsigned char *) src_str.c_str(),

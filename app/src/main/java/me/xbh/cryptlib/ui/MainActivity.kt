@@ -19,12 +19,11 @@ import java.nio.charset.Charset
 class MainActivity : AppCompatActivity() {
 
     val TAG = "Test"
-    lateinit var binding : ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
 
 
     }
@@ -34,24 +33,25 @@ class MainActivity : AppCompatActivity() {
         val text = "{name:\"你好啊，我不好！你真的ok吗？\", age:120}"
         val cm = CryptManager
         Log.i(TAG, "c_md5=>${Md5.digest(text)}")
-
-        val aes = AesImpl();
-        val key = cm.getKey(aes, null)
-        val cipherText = aes.encrypt(text, key)
-        val plainText = aes.decrypt(cipherText, key)
-        Log.i(TAG, "encrypt=>$cipherText")
-        Log.i(TAG, "decrypt=>$plainText")
-        Log.i(TAG, "key=>$key")
-
-        Log.i(TAG, "================= RSA-BEGIN =================")
-        val rsa = RsaImpl()
-        val pubkey = cm.getKey(rsa, 1)
-        val enstr = cm.encrypt(rsa, "jVIr32Ju5H85laQY", pubkey)
-        val destr = cm.decrypt(rsa, "", pubkey);
-        Log.i(TAG, "encrypt=>$enstr")
-        Log.i(TAG, "decrypt=>$destr")
-        Log.i(TAG, "pubkey=>$pubkey")
-        Log.i(TAG, "================= RSA-END   =================")
+        var count = 0;
+        do {
+            Log.i(TAG, "================= RSA-BEGIN =================")
+            val rsa = RsaImpl()
+            val pubkey = cm.getKey(rsa, 1)
+//        val enstr = cm.encrypt(rsa, "jVIr32Ju5H85laQY", pubkey)
+            val destr = cm.decrypt(rsa, "a8JM1DHGc54t13Qlfmd+nQMYbH8aQhVOgYdiUG/4tnu9AUR56+HOXLf701UwJgTbWWgGBzEx5zqhKt4oX5v2Wmb3PsKOh8MX3ByTlgMajrOlpsRLDLfDr+19wIEbro0FdrNlN9Um5WS2iGSO3OIGOGixd53fvSdE4+afqrWiFYg=", pubkey);
+//        Log.i(TAG, "encrypt=>$enstr")
+            Log.i(TAG, "decrypt=>$destr")
+            Log.i(TAG, "pubkey=>$pubkey")
+            Log.i(TAG, "================= RSA-END   =================")
+            Log.i(TAG, "================= AES-BEGIN =================")
+            val aes = AesImpl()
+            val key = destr
+            val plainText = aes.decrypt("OLv+3+0UxRQnnuVChX0sy/jIHpA/DMyzeVW+zBqwgLbi/89YTgBG9m0r4h0LfoBLTaXZHOn8VDV2hS1MRSIcDoUED5zMIB7gv08A88WapzCNYgT1Nfb4BxXUi5ys19CSpjWbdGLElqMa7B5XLsl6/DkZn5sZSst2KMy51SFKXpoIFG3n8Np2yA9/SO8yYzU9gqU46ss5cH6tL0vBZ4QpnhfwcgrreUOaH4bM/T56/R4VYfzYDpS/2HK+ete3a4zp23rk2AVEWcSi1vP1JlbMY3u6YqPLDa4Lu0xrPEoPq+S5q4cgBQK2dVulgpAk3pnm", key)
+            Log.i(TAG, "decrypt=>$plainText")
+            Log.i(TAG, "================= AES-END   =================")
+            count++
+        } while (count < 0)
     }
 
 }

@@ -7,8 +7,8 @@ aux_source_directory(src/main/cpp/ SOURCE_DIR)
 add_library(openssl SHARED IMPORTED )
 add_library(ssl SHARED IMPORTED )
 #引入第三方.so库
-set_target_properties(openssl PROPERTIES IMPORTED_LOCATION D:/git/cryptlib/CryptLibrary/src/main/cpp/libs/${ANDROID_ABI}/libcrypto.so)
-set_target_properties(ssl PROPERTIES IMPORTED_LOCATION D:/git/cryptlib/CryptLibrary/src/main/cpp/libs/${ANDROID_ABI}/libssl.so)
+set_target_properties(openssl PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/src/main/cpp/libs/${ANDROID_ABI}/libcrypto.so)
+set_target_properties(ssl PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/src/main/cpp/libs/${ANDROID_ABI}/libssl.so)
 
 add_library(
              crypt

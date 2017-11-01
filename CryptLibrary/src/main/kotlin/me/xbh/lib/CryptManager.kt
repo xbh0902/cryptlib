@@ -23,5 +23,5 @@ object CryptManager{
     fun encrypt(crypt: ICrypt, plain: String, key: String): String = crypt.encrypt(plain, key)
 
 
-    fun decrypt(crypt: ICrypt, cipher: String, key: String): String = crypt.encrypt(cipher, key)
+    fun decrypt(crypt: ICrypt, cipher: String, key: String): String = crypt.decrypt(cipher, key)
 }

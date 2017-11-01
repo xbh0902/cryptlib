@@ -63,7 +63,7 @@ Java_me_xbh_lib_impl_RsaImpl_encryptByPublicKey(JNIEnv *env, jclass clazz, jstri
 }
 
 JNIEXPORT jstring JNICALL
-Java_me_xbh_lib_impl_RsaImpl_decryptByPublicKey(JNIEnv *env, jclass clazz, jstring cipher,
+Java_me_xbh_lib_impl_RsaImpl_decryptByPublicKey(JNIEnv *env, jobject thiz, jstring cipher,
                                                 jstring key) {
     RSAEncrypt *rsa = NULL;
     rsa = new RSAEncrypt[1];
@@ -74,6 +74,6 @@ Java_me_xbh_lib_impl_RsaImpl_decryptByPublicKey(JNIEnv *env, jclass clazz, jstri
         result = "NULL";
     }
     delete[] rsa;
-
+    result = result.substr(0, 16);
     return env->NewStringUTF(result.c_str());
 }
