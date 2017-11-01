@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         val text = "{name:\"你好啊，我不好！你真的ok吗？\", age:120}"
         val cm = CryptManager
-        Log.i(TAG, "c_md5=>${Md5.digest(text)}")
+        Log.i(TAG, "c_md5=>${cm.md5(text)}")
         var count = 0;
         do {
             Log.i(TAG, "================= RSA-BEGIN =================")

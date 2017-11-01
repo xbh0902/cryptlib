@@ -33,6 +33,11 @@ object CryptManager{
     fun getAesKey(): String = getElement(Type.AES).getKey(null)
 
     /**
+     * md5加密
+     */
+    fun md5(plain: String): String = Md5.digest(plain)
+
+    /**
      * 获取本地密钥
      */
     fun getAesLocalKey(context: Context) = getElement(Type.AES).getKey(context)
