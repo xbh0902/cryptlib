@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             Log.i(TAG, "================= AES-END   =================")
 
             count++
-        } while (count < 10)
+        } while (count < 100)
     }
 
 }

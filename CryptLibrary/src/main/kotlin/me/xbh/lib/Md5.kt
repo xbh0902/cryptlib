@@ -1,8 +1,13 @@
 package me.xbh.lib
 
 /**
- * Created by lulu on 17-10-10.
- */
+* <p>
+* 描述：MD5本地接口
+* </p>
+* 创建日期：2017年11月02日.
+* @author wenbin.zhou@ehking.com
+* @version 1.0
+*/
 
 object Md5 {
 

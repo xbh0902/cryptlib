@@ -5,8 +5,13 @@ import me.xbh.lib.ICrypt
 
 
 /**
- * Created by lulu on 17-9-27.
- */
+* <p>
+* 描述：AES加密本地接口
+* </p>
+* 创建日期：2017年11月02日.
+* @author wenbin.zhou@ehking.com
+* @version 1.0
+*/
 class AesImpl : ICrypt {
 
 

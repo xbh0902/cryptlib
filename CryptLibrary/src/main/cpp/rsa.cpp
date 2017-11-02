@@ -35,7 +35,7 @@ RSA *RSAEncrypt::createRSA(std::string key, int flag) {
     int nPublicKeyLen = (int) key.size();//key为base64编码的公钥字符串
     for (int i = 64; i < nPublicKeyLen; i += 64) {
         if (key[i] != '\n') {
-            key.insert(i, "\n");
+            key.insert((unsigned long) i, "\n");
         }
         i++;
     }
@@ -68,9 +68,8 @@ std::string RSAEncrypt::encrypt(std::string plain, std::string key) {
         return NULL;
     }
     rsa_len = RSA_size(rsa);
-    char *encrypt = NULL;
-    encrypt = new char[rsa_len + 1];
-    memset(encrypt, 0, (size_t) (rsa_len + 1));
+    char *encrypt = new char[rsa_len + 1];
+    memset(encrypt, 0, (size_t) (rsa_len + 1));//初始化内存
     int flag = RSA_public_encrypt((int) plain.length(), (const unsigned char *) plain.c_str(),
                                   (unsigned char *) encrypt, rsa, RSA_PKCS1_PADDING);
     if (flag == -1) {
@@ -81,7 +80,7 @@ std::string RSAEncrypt::encrypt(std::string plain, std::string key) {
     }
 
     std::vector<byte> ve;
-    std::string tmp = std::string(encrypt, flag);
+    std::string tmp = std::string(encrypt, (unsigned long) flag);
     ve.resize(tmp.size());
     ve.assign(tmp.begin(), tmp.end());
     std::string result = Base64::encode(ve);
@@ -100,17 +99,18 @@ std::string RSAEncrypt::decrypt(std::string cipher, std::string key) {
     std::vector<byte> src_v = Base64::decode(cipher);
     std::string src_str = std::string(src_v.begin(), src_v.end());
     int len = RSA_size(rsa);
-    char *decrypt = (char *) malloc((size_t) (len + 1));
-    memset(decrypt, 0, (size_t) (len + 1));
-    int ret = RSA_public_decrypt((int) src_str.size(), (const unsigned char *) src_str.c_str(),
+    char *decrypt = new char[len + 1];
+    memset(decrypt, 0, (size_t) (len + 1));//初始化内存
+    int rlen = RSA_public_decrypt((int) src_str.size(), (const unsigned char *) src_str.c_str(),
                                   (unsigned char *) decrypt, rsa, RSA_PKCS1_PADDING);
-    if (ret == -1) {
+    if (rlen == -1) {
         std::cout << "Encrypt failed!" << std::endl;
+        delete[] decrypt;
         RSA_free(rsa);
         return NULL;
     }
-    result = std::string(decrypt, ret);
-    free(decrypt);
+    result = std::string(decrypt, (unsigned long) rlen);
     RSA_free(rsa);
+    delete[] decrypt;
     return result;
 }

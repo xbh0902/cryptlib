@@ -1,11 +1,15 @@
 package me.xbh.lib.impl
 
 import me.xbh.lib.ICrypt
-import java.util.*
 
 /**
- * Created by lulu on 17-10-13.
- */
+* <p>
+* 描述：RSA加密本地接口
+* </p>
+* 创建日期：2017年11月02日.
+* @author wenbin.zhou@ehking.com
+* @version 1.0
+*/
 class RsaImpl : ICrypt {
 
     override fun getKey(obj: Any?): String = getPublicKey(obj as Int)

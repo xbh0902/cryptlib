@@ -8,8 +8,13 @@ import java.util.*
 
 
 /**
- * Created by lulu on 17-9-27.
- */
+* <p>
+* 描述：使用`CryptManager`可以对数据加密，提供安全保障。其中包含MD5、AES、和RSA公钥加密解密
+* </p>
+* 创建日期：2017年11月02日.
+* @author wenbin.zhou@ehking.com
+* @version 1.0
+*/
 object CryptManager{
 
     private val objs = HashMap<String, ICrypt>()

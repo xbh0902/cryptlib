@@ -1,3 +1,7 @@
+//
+// Created by lulu on 17-10-12.
+//
+
 #include "base64.h"
 
 const char *Base64::table = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
