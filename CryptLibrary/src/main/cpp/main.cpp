@@ -22,40 +22,36 @@ Java_me_xbh_lib_impl_AesImpl_getLocalKey(JNIEnv *env, jobject thiz, jobject cont
 JNIEXPORT jstring JNICALL
 Java_me_xbh_lib_impl_AesImpl_encode(JNIEnv *env, jobject thiz, jstring plainText, jstring key) {
 
-    AES *aes = NULL;
-    aes = new AES[1];
+    AES *aes = new AES;
     aes->setKey((const byte *) env->GetStringUTFChars(key, NULL));
     string result = aes->encrypt(env->GetStringUTFChars(plainText, NULL));
-    delete[] aes;
+    delete aes;
     return env->NewStringUTF(result.c_str());
 }
 
 JNIEXPORT jstring JNICALL
 Java_me_xbh_lib_impl_AesImpl_decode(JNIEnv *env, jobject thiz, jstring cipherText, jstring key) {
 
-    AES *aes = NULL;
-    aes = new AES[1];
+    AES *aes = new AES;
     aes->setKey((const byte *) env->GetStringUTFChars(key, NULL));
     string result = aes->decrypt(env->GetStringUTFChars(cipherText, NULL));
-    delete[] aes;
+    delete aes;
     return env->NewStringUTF(result.c_str());
 }
 
 JNIEXPORT jstring JNICALL
 Java_me_xbh_lib_impl_RsaImpl_getPublicKey(JNIEnv *env, jobject thiz, jint build) {
 
-    RSAEncrypt *rsa = NULL;
-    rsa = new RSAEncrypt[1];
+    RSAEncrypt *rsa = new RSAEncrypt;
     string result = rsa->getPublicKey(build);
-    delete[] rsa;
+    delete rsa;
     return env->NewStringUTF(result.c_str());
 }
 
 JNIEXPORT jstring JNICALL
 Java_me_xbh_lib_impl_RsaImpl_encryptByPublicKey(JNIEnv *env, jobject thiz, jstring plain,
                                                 jstring key) {
-    RSAEncrypt *rsa = NULL;
-    rsa = new RSAEncrypt[1];
+    RSAEncrypt *rsa = new RSAEncrypt;
     string pubkey = env->GetStringUTFChars(key, NULL);
     string plainText = env->GetStringUTFChars(plain, NULL);
 
@@ -63,22 +59,20 @@ Java_me_xbh_lib_impl_RsaImpl_encryptByPublicKey(JNIEnv *env, jobject thiz, jstri
     if (result.c_str() == NULL) {
         result = "NULL";
     }
-    delete[] rsa;
+    delete rsa;
     return env->NewStringUTF(result.c_str());
 }
 
 JNIEXPORT jstring JNICALL
 Java_me_xbh_lib_impl_RsaImpl_decryptByPublicKey(JNIEnv *env, jobject thiz, jstring cipher,
                                                 jstring key) {
-    RSAEncrypt *rsa = NULL;
-    rsa = new RSAEncrypt[1];
+    RSAEncrypt *rsa = new RSAEncrypt;
     string pubkey = env->GetStringUTFChars(key, NULL);
     string cipherText = env->GetStringUTFChars(cipher, NULL);
     string result = rsa->decrypt(cipherText, pubkey);
     if (result.c_str() == NULL) {
         result = "NULL";
     }
-    delete[] rsa;
-    result = result.substr(0, 16);
+    delete rsa;
     return env->NewStringUTF(result.c_str());
 }

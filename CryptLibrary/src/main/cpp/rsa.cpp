@@ -32,7 +32,7 @@ std::string RSAEncrypt::getPublicKey(int buildType) {
 }
 
 RSA *RSAEncrypt::createRSA(std::string key, int flag) {
-    int nPublicKeyLen = (int) key.size();      //strPublicKey为base64编码的公钥字符串
+    int nPublicKeyLen = (int) key.size();//key为base64编码的公钥字符串
     for (int i = 64; i < nPublicKeyLen; i += 64) {
         if (key[i] != '\n') {
             key.insert(i, "\n");
@@ -70,6 +70,7 @@ std::string RSAEncrypt::encrypt(std::string plain, std::string key) {
     rsa_len = RSA_size(rsa);
     char *encrypt = NULL;
     encrypt = new char[rsa_len + 1];
+    memset(encrypt, 0, (size_t) (rsa_len + 1));
     int flag = RSA_public_encrypt((int) plain.length(), (const unsigned char *) plain.c_str(),
                                   (unsigned char *) encrypt, rsa, RSA_PKCS1_PADDING);
     if (flag == -1) {
@@ -80,7 +81,7 @@ std::string RSAEncrypt::encrypt(std::string plain, std::string key) {
     }
 
     std::vector<byte> ve;
-    std::string tmp = (char*)encrypt;
+    std::string tmp = std::string(encrypt, flag);
     ve.resize(tmp.size());
     ve.assign(tmp.begin(), tmp.end());
     std::string result = Base64::encode(ve);
@@ -91,24 +92,25 @@ std::string RSAEncrypt::encrypt(std::string plain, std::string key) {
 
 std::string RSAEncrypt::decrypt(std::string cipher, std::string key) {
 
+    std::string result;
     RSA *rsa = createRSA(key, 1);
     if (rsa == NULL) {
         return NULL;
     }
     std::vector<byte> src_v = Base64::decode(cipher);
     std::string src_str = std::string(src_v.begin(), src_v.end());
-    char *decrypt = NULL;
-    decrypt = new char[16];
-    int flag = RSA_public_decrypt((int) src_str.size(), (const unsigned char *) src_str.c_str(),
+    int len = RSA_size(rsa);
+    char *decrypt = (char *) malloc((size_t) (len + 1));
+    memset(decrypt, 0, (size_t) (len + 1));
+    int ret = RSA_public_decrypt((int) src_str.size(), (const unsigned char *) src_str.c_str(),
                                   (unsigned char *) decrypt, rsa, RSA_PKCS1_PADDING);
-    if (flag == -1) {
+    if (ret == -1) {
         std::cout << "Encrypt failed!" << std::endl;
-        delete[] decrypt;
         RSA_free(rsa);
         return NULL;
     }
-    std::string result = decrypt;
-    delete[] decrypt;
+    result = std::string(decrypt, ret);
+    free(decrypt);
     RSA_free(rsa);
     return result;
 }
