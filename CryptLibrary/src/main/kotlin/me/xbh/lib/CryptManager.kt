@@ -15,7 +15,7 @@ object CryptManager{
     private val objs = HashMap<String, ICrypt>()
 
     init {
-        System.loadLibrary("ehkingCrypt2")
+        System.loadLibrary("crypt1")
         objs.put(Type.AES.name, AesImpl())
         objs.put(Type.RSA.name, RsaImpl())
     }
