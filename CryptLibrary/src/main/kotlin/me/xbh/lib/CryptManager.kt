@@ -1,7 +1,6 @@
 package me.xbh.lib
 
 import android.content.Context
-import me.xbh.lib.bean.Type
 import me.xbh.lib.impl.AesImpl
 import me.xbh.lib.impl.RsaImpl
 import java.util.*
@@ -66,5 +65,10 @@ object CryptManager{
 
     private fun getElement(type: Type): ICrypt {
         return objs[type.name] as ICrypt
+    }
+
+    enum class Type {
+        AES,
+        RSA
     }
 }

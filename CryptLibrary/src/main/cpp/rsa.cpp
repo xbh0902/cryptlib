@@ -47,7 +47,7 @@ RSA *RSAEncrypt::createRSA(std::string key, int flag) {
     keybio = BIO_new_mem_buf(chPublicKey, -1);
     if (keybio == NULL) {
         printf("Failed to create key BIO");
-        return 0;
+        return NULL;
     }
 
     if (flag)
