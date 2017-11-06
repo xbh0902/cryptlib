@@ -25,13 +25,13 @@ extern "C" {
     Java_me_xbh_lib_impl_AesImpl_getLocalKey(JNIEnv *env, jobject thiz, jobject context);
 
     /**
-     * AES加密
+     * AES ECB加密
      */
     JNIEXPORT jstring JNICALL
     Java_me_xbh_lib_impl_AesImpl_encode(JNIEnv *env, jobject thiz, jstring plainText, jstring key);
 
     /**
-     * AES解密
+     * AES ECB解密
      */
     JNIEXPORT jstring JNICALL
     Java_me_xbh_lib_impl_AesImpl_decode(JNIEnv *env, jobject thiz, jstring cipherText, jstring key);
