@@ -1,4 +1,4 @@
-package me.xbh.lib
+package me.xbh.lib.core
 
 /**
  * <p>
@@ -8,7 +8,7 @@ package me.xbh.lib
  * @author wenbin.zhou@ehking.com
  * @version 1.0
  */
-interface ICrypt {
+internal interface ICrypt {
 
     fun getKey(obj : Any?): String
 

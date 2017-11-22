@@ -523,7 +523,7 @@ typedef struct X509_info_st
 DECLARE_STACK_OF(X509_INFO)
 #endif
 
-/* The next 2 structures and their 8 routines were sent to me by
+/* The next 2 structures and their 8 routines were sent to com.ehking.crypt by
  * Pat Richard <patr@x509.com> and are used to manipulate
  * Netscapes spki structures - useful if you are writing a CA web page
  */

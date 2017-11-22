@@ -1,7 +1,7 @@
-package me.xbh.lib.impl
+package me.xbh.lib.core.cxx
 
 import android.content.Context
-import me.xbh.lib.ICrypt
+import me.xbh.lib.core.ICrypt
 
 
 /**
@@ -12,7 +12,7 @@ import me.xbh.lib.ICrypt
 * @author wenbin.zhou@ehking.com
 * @version 1.0
 */
-class AesImpl : ICrypt {
+internal open class AesImpl : ICrypt {
 
 
     override fun getKey(obj: Any?): String = if (obj == null) {

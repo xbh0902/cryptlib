@@ -7,6 +7,7 @@
 #include <base64.h>
 #include <openssl/pem.h>
 #include <iostream>
+#include <cstring>
 
 RSAEncrypt::RSAEncrypt() {}
 

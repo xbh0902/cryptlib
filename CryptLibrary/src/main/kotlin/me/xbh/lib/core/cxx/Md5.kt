@@ -1,4 +1,4 @@
-package me.xbh.lib
+package me.xbh.lib.core.cxx
 
 /**
 * <p>
@@ -9,7 +9,6 @@ package me.xbh.lib
 * @version 1.0
 */
 
-object Md5 {
-
+internal class Md5 constructor(){
     external fun digest(plainText: String): String
 }
