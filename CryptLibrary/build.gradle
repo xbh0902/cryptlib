@@ -14,20 +14,18 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags "-std=c++11 -frtti -fexceptions"
-                arguments "-DANDROID_TOOLCHAIN=clang", "-DANDROID_STL=gnustl_shared"
                 abiFilters 'armeabi', 'armeabi-v7a', 'x86', 'x86_64', 'mips', 'arm64-v8a'
-            }
-        }
-
-        sourceSets {
-
-            main{
-                java.srcDirs += 'src/main/kotlin'
-                jniLibs.srcDirs 'src/main/jniLibs'
             }
         }
     }
 
+    sourceSets {
+
+        main{
+            java.srcDirs += 'src/main/kotlin'
+            jniLibs.srcDirs 'src/main/jniLibs'
+        }
+    }
 
     buildTypes {
         release {

@@ -15,7 +15,6 @@ import me.xbh.lib.core.java.CryptServiceJavaImpl
 object CryptManager {
 
     init {
-        //System.loadLibrary("supportjni")
         System.loadLibrary("crypt1")
     }
 
