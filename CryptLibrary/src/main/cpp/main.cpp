@@ -1,56 +1,61 @@
-#include <rsa.h>
+//
+// Created by lulu on 17-10-12.
+//
+
+#include "rsa.h"
 #include "main.h"
 #include "md5.h"
-#include "random_tool.h"
+#include "keytools.h"
 #include "aes.h"
 
 JNIEXPORT jstring JNICALL
-Java_me_xbh_lib_Md5_digest(JNIEnv *env, jclass clazz, jstring plainText) {
+Java_me_xbh_lib_core_cxx_Md5_digest(JNIEnv *env, jobject thiz, jstring plainText) {
     return env->NewStringUTF(MD5(env->GetStringUTFChars(plainText, NULL)).toStr().c_str());
 }
 
 JNIEXPORT jstring JNICALL
-Java_me_xbh_lib_impl_AesImpl_getRandomKey(JNIEnv *env) {
+Java_me_xbh_lib_core_cxx_AesImpl_getRandomKey(JNIEnv *env) {
     return env->NewStringUTF(generateAlphaAndDigit(16).c_str());
 }
 
 JNIEXPORT jstring JNICALL
-Java_me_xbh_lib_impl_AesImpl_encode(JNIEnv *env, jclass clazz, jstring plainText, jstring key) {
+Java_me_xbh_lib_core_cxx_AesImpl_getLocalKey(JNIEnv *env, jobject thiz, jobject context){
+    return env->NewStringUTF(getLocalKey(env, thiz, context).c_str());
+}
 
-    AES *aes = NULL;
-    aes = new AES[1];
+JNIEXPORT jstring JNICALL
+Java_me_xbh_lib_core_cxx_AesImpl_encode(JNIEnv *env, jobject thiz, jstring plainText, jstring key) {
+
+    AES *aes = new AES;
     aes->setKey((const byte *) env->GetStringUTFChars(key, NULL));
     string result = aes->encrypt(env->GetStringUTFChars(plainText, NULL));
-    delete[] aes;
+    delete aes;
     return env->NewStringUTF(result.c_str());
 }
 
 JNIEXPORT jstring JNICALL
-Java_me_xbh_lib_impl_AesImpl_decode(JNIEnv *env, jclass clazz, jstring cipherText, jstring key) {
+Java_me_xbh_lib_core_cxx_AesImpl_decode(JNIEnv *env, jobject thiz, jstring cipherText, jstring key) {
 
-    AES *aes = NULL;
-    aes = new AES[1];
+    AES *aes = new AES;
     aes->setKey((const byte *) env->GetStringUTFChars(key, NULL));
     string result = aes->decrypt(env->GetStringUTFChars(cipherText, NULL));
-    delete[] aes;
+    delete aes;
     return env->NewStringUTF(result.c_str());
 }
 
 JNIEXPORT jstring JNICALL
-Java_me_xbh_lib_impl_RsaImpl_getPublicKey(JNIEnv *env, jclass clazz, jint build) {
+Java_me_xbh_lib_core_cxx_RsaImpl_getPublicKey(JNIEnv *env, jobject thiz, jint build) {
 
-    RSAEncrypt *rsa = NULL;
-    rsa = new RSAEncrypt[1];
+    RSAEncrypt *rsa = new RSAEncrypt;
     string result = rsa->getPublicKey(build);
-    delete[] rsa;
+    delete rsa;
     return env->NewStringUTF(result.c_str());
 }
 
 JNIEXPORT jstring JNICALL
-Java_me_xbh_lib_impl_RsaImpl_encryptByPublicKey(JNIEnv *env, jclass clazz, jstring plain,
+Java_me_xbh_lib_core_cxx_RsaImpl_encryptByPublicKey(JNIEnv *env, jobject thiz, jstring plain,
                                                 jstring key) {
-    RSAEncrypt *rsa = NULL;
-    rsa = new RSAEncrypt[1];
+    RSAEncrypt *rsa = new RSAEncrypt;
     string pubkey = env->GetStringUTFChars(key, NULL);
     string plainText = env->GetStringUTFChars(plain, NULL);
 
@@ -58,15 +63,14 @@ Java_me_xbh_lib_impl_RsaImpl_encryptByPublicKey(JNIEnv *env, jclass clazz, jstri
     if (result.c_str() == NULL) {
         result = "NULL";
     }
-    delete[] rsa;
+    delete rsa;
     return env->NewStringUTF(result.c_str());
 }
 
 JNIEXPORT jstring JNICALL
-Java_me_xbh_lib_impl_RsaImpl_decryptByPublicKey(JNIEnv *env, jclass clazz, jstring cipher,
+Java_me_xbh_lib_core_cxx_RsaImpl_decryptByPublicKey(JNIEnv *env, jobject thiz, jstring cipher,
                                                 jstring key) {
-    RSAEncrypt *rsa = NULL;
-    rsa = new RSAEncrypt[1];
+    RSAEncrypt *rsa = new RSAEncrypt;
     string pubkey = env->GetStringUTFChars(key, NULL);
     string cipherText = env->GetStringUTFChars(cipher, NULL);
     string result = rsa->decrypt(cipherText, pubkey);

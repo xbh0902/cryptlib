@@ -7,6 +7,7 @@
 #include <base64.h>
 #include <openssl/pem.h>
 #include <iostream>
+#include <cstring>
 
 RSAEncrypt::RSAEncrypt() {}
 
@@ -32,10 +33,10 @@ std::string RSAEncrypt::getPublicKey(int buildType) {
 }
 
 RSA *RSAEncrypt::createRSA(std::string key, int flag) {
-    int nPublicKeyLen = (int) key.size();      //strPublicKey为base64编码的公钥字符串
+    int nPublicKeyLen = (int) key.size();//key为base64编码的公钥字符串
     for (int i = 64; i < nPublicKeyLen; i += 64) {
         if (key[i] != '\n') {
-            key.insert(i, "\n");
+            key.insert((unsigned long) i, "\n");
         }
         i++;
     }
@@ -47,7 +48,7 @@ RSA *RSAEncrypt::createRSA(std::string key, int flag) {
     keybio = BIO_new_mem_buf(chPublicKey, -1);
     if (keybio == NULL) {
         printf("Failed to create key BIO");
-        return 0;
+        return NULL;
     }
 
     if (flag)
@@ -68,8 +69,8 @@ std::string RSAEncrypt::encrypt(std::string plain, std::string key) {
         return NULL;
     }
     rsa_len = RSA_size(rsa);
-    char *encrypt = NULL;
-    encrypt = new char[rsa_len + 1];
+    char *encrypt = new char[rsa_len + 1];
+    memset(encrypt, 0, (size_t) (rsa_len + 1));//初始化内存
     int flag = RSA_public_encrypt((int) plain.length(), (const unsigned char *) plain.c_str(),
                                   (unsigned char *) encrypt, rsa, RSA_PKCS1_PADDING);
     if (flag == -1) {
@@ -80,7 +81,7 @@ std::string RSAEncrypt::encrypt(std::string plain, std::string key) {
     }
 
     std::vector<byte> ve;
-    std::string tmp = (char*)encrypt;
+    std::string tmp = std::string(encrypt, (unsigned long) flag);
     ve.resize(tmp.size());
     ve.assign(tmp.begin(), tmp.end());
     std::string result = Base64::encode(ve);
@@ -91,27 +92,26 @@ std::string RSAEncrypt::encrypt(std::string plain, std::string key) {
 
 std::string RSAEncrypt::decrypt(std::string cipher, std::string key) {
 
-    int rsa_len;
+    std::string result;
     RSA *rsa = createRSA(key, 1);
     if (rsa == NULL) {
         return NULL;
     }
-    cipher = "ATkjNKdQRIgzvjbCXNYhKj0o3OWqgi+8i6is5PudJns0E+tGNzFwEQ++yfaq9Ra1Z1d98QKLfzvXlQDbxN7bhAfR5n0IjlG6b73XIOPhXOiEJEKvnn8BUb0cQWuW130OunV+ujnOuzEENY8/nMbpqUlRxV56d3PY9MDF+Y8hikM=";
     std::vector<byte> src_v = Base64::decode(cipher);
     std::string src_str = std::string(src_v.begin(), src_v.end());
-    rsa_len = RSA_size(rsa);
-    char *decrypt = NULL;
-    decrypt = new char[16];
-    int flag = RSA_public_decrypt((int) src_str.size(), (const unsigned char *) src_str.c_str(),
+    int len = RSA_size(rsa);
+    char *decrypt = new char[len + 1];
+    memset(decrypt, 0, (size_t) (len + 1));//初始化内存
+    int rlen = RSA_public_decrypt((int) src_str.size(), (const unsigned char *) src_str.c_str(),
                                   (unsigned char *) decrypt, rsa, RSA_PKCS1_PADDING);
-    if (flag == -1) {
+    if (rlen == -1) {
         std::cout << "Encrypt failed!" << std::endl;
         delete[] decrypt;
         RSA_free(rsa);
         return NULL;
     }
-    std::string result = decrypt;
-    delete[] decrypt;
+    result = std::string(decrypt, (unsigned long) rlen);
     RSA_free(rsa);
+    delete[] decrypt;
     return result;
 }
