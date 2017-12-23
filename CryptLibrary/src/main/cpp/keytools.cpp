@@ -5,14 +5,14 @@
 #include "md5.h"
 #include "keytools.h"
 
-string generateAlphaAndDigit(int lenght) {
+string generateAlphaAndDigit(int length) {
 
     string result = "";
-    if (lenght < 1) {
+    if (length < 1) {
         return result;
     }
     int data = 0;
-    for (int i = 0; i < lenght; ++i) {
+    for (int i = 0; i < length; ++i) {
         int index = rand() % 3;
         char *tmp = NULL;
         tmp = new char[sizeof(char)];
