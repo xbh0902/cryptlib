@@ -1,8 +1,9 @@
 # Created by .ignore support plugin (hsz.mobi)
-/.gradle
-/.idea
+.gradle
+.idea
 *.iml
 build/
-/gradlew
-/gradlew.bat
-/gradle/
+gradlew
+gradlew.bat
+gradle/
+.externalNativeBuild
