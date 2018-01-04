@@ -3,7 +3,7 @@
 buildscript {
     apply from: "versions.gradle"
     repositories {
-        maven { url "$meven_url" }
+        maven.url "$meven_url"
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$gradle_tools_version"
@@ -13,7 +13,7 @@ buildscript {
 
 allprojects {
     repositories {
-        maven { url "$meven_url" }
+        maven.url "$meven_url"
     }
 }
 

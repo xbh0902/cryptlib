@@ -14,8 +14,7 @@ string generateAlphaAndDigit(int length) {
     int data = 0;
     for (int i = 0; i < length; ++i) {
         int index = rand() % 3;
-        char *tmp = NULL;
-        tmp = new char[sizeof(char)];
+        char *tmp = new char[sizeof(char)];
         memset(tmp, 0, sizeof(tmp));
         switch (index) {
 

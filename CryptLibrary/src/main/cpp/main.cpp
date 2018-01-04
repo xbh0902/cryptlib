@@ -77,6 +77,6 @@ Java_me_xbh_lib_core_cxx_RsaImpl_decryptByPublicKey(JNIEnv *env, jobject thiz, j
     if (result.c_str() == NULL) {
         result = "NULL";
     }
-    delete[] rsa;
+    delete rsa;
     return env->NewStringUTF(result.c_str());
 }
