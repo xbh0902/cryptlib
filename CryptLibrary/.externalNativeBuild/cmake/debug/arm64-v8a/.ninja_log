@@ -1,0 +1,11 @@
+# ninja log v5
+0	368	0	CMakeFiles/crypt1.dir/src/main/cpp/xlib.cpp.o	2b20d540c20a2af1
+0	520	0	CMakeFiles/crypt1.dir/src/main/cpp/base64.cpp.o	125e25f79570fbf2
+0	614	0	CMakeFiles/crypt1.dir/src/main/cpp/keytools.cpp.o	3fa175b6db7ae07a
+369	984	0	CMakeFiles/crypt1.dir/src/main/cpp/rsa.cpp.o	cd296cbb6a571b56
+614	997	0	CMakeFiles/crypt1.dir/src/main/cpp/md5.cpp.o	a15f12d206346a69
+520	1010	0	CMakeFiles/crypt1.dir/src/main/cpp/main.cpp.o	818066158a1e1b5e
+984	1317	0	CMakeFiles/crypt1.dir/src/main/cpp/aes.cpp.o	4a46814c3fede94b
+1317	1927	0	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/libcrypt1.so	4fd945235c4aca5c
+0	411	0	CMakeFiles/crypt1.dir/src/main/cpp/main.cpp.o	818066158a1e1b5e
+411	698	0	../../../../build/intermediates/cmake/debug/obj/arm64-v8a/libcrypt1.so	4fd945235c4aca5c

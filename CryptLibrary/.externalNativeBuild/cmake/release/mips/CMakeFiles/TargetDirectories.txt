@@ -1,0 +1,3 @@
+/home/lulu/source/github/cryptlib/CryptLibrary/.externalNativeBuild/cmake/release/mips/CMakeFiles/edit_cache.dir
+/home/lulu/source/github/cryptlib/CryptLibrary/.externalNativeBuild/cmake/release/mips/CMakeFiles/rebuild_cache.dir
+/home/lulu/source/github/cryptlib/CryptLibrary/.externalNativeBuild/cmake/release/mips/CMakeFiles/crypt1.dir

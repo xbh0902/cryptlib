@@ -1,0 +1,90 @@
+
+{
+	"buildFiles" : [ "/home/lulu/source/github/cryptlib/CryptLibrary/CMakeLists.txt" ],
+	"cleanCommands" : 
+	[
+		"/home/lulu/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/lulu/source/github/cryptlib/CryptLibrary/.externalNativeBuild/cmake/debug/x86_64 --target clean"
+	],
+	"cppFileExtensions" : [ "cpp" ],
+	"libraries" : 
+	{
+		"crypt1-Debug-x86_64" : 
+		{
+			"abi" : "x86_64",
+			"artifactName" : "crypt1",
+			"buildCommand" : "/home/lulu/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/lulu/source/github/cryptlib/CryptLibrary/.externalNativeBuild/cmake/debug/x86_64 --target crypt1",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android --gcc-toolchain=/home/lulu/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/home/lulu/Android/Sdk/ndk-bundle/sysroot  -Dcrypt1_EXPORTS -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/x86_64/include -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward  -isystem /home/lulu/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -D__ANDROID_API__=21 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -frtti -fexceptions -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/lulu/source/github/cryptlib/CryptLibrary/src/main/cpp/keytools.cpp",
+					"workingDirectory" : "/home/lulu/source/github/cryptlib/CryptLibrary/.externalNativeBuild/cmake/debug/x86_64"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android --gcc-toolchain=/home/lulu/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/home/lulu/Android/Sdk/ndk-bundle/sysroot  -Dcrypt1_EXPORTS -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/x86_64/include -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward  -isystem /home/lulu/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -D__ANDROID_API__=21 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -frtti -fexceptions -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/lulu/source/github/cryptlib/CryptLibrary/src/main/cpp/base64.cpp",
+					"workingDirectory" : "/home/lulu/source/github/cryptlib/CryptLibrary/.externalNativeBuild/cmake/debug/x86_64"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android --gcc-toolchain=/home/lulu/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/home/lulu/Android/Sdk/ndk-bundle/sysroot  -Dcrypt1_EXPORTS -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/x86_64/include -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward  -isystem /home/lulu/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -D__ANDROID_API__=21 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -frtti -fexceptions -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/lulu/source/github/cryptlib/CryptLibrary/src/main/cpp/xlib.cpp",
+					"workingDirectory" : "/home/lulu/source/github/cryptlib/CryptLibrary/.externalNativeBuild/cmake/debug/x86_64"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android --gcc-toolchain=/home/lulu/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/home/lulu/Android/Sdk/ndk-bundle/sysroot  -Dcrypt1_EXPORTS -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/x86_64/include -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward  -isystem /home/lulu/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -D__ANDROID_API__=21 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -frtti -fexceptions -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/lulu/source/github/cryptlib/CryptLibrary/src/main/cpp/rsa.cpp",
+					"workingDirectory" : "/home/lulu/source/github/cryptlib/CryptLibrary/.externalNativeBuild/cmake/debug/x86_64"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android --gcc-toolchain=/home/lulu/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/home/lulu/Android/Sdk/ndk-bundle/sysroot  -Dcrypt1_EXPORTS -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/x86_64/include -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward  -isystem /home/lulu/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -D__ANDROID_API__=21 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -frtti -fexceptions -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/lulu/source/github/cryptlib/CryptLibrary/src/main/cpp/main.cpp",
+					"workingDirectory" : "/home/lulu/source/github/cryptlib/CryptLibrary/.externalNativeBuild/cmake/debug/x86_64"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android --gcc-toolchain=/home/lulu/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/home/lulu/Android/Sdk/ndk-bundle/sysroot  -Dcrypt1_EXPORTS -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/x86_64/include -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward  -isystem /home/lulu/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -D__ANDROID_API__=21 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -frtti -fexceptions -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/lulu/source/github/cryptlib/CryptLibrary/src/main/cpp/md5.cpp",
+					"workingDirectory" : "/home/lulu/source/github/cryptlib/CryptLibrary/.externalNativeBuild/cmake/debug/x86_64"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android --gcc-toolchain=/home/lulu/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/home/lulu/Android/Sdk/ndk-bundle/sysroot  -Dcrypt1_EXPORTS -I../../../../src/main/cpp/include -I../../../../src/main/cpp/include/openssl -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/libs/x86_64/include -isystem /home/lulu/Android/Sdk/ndk-bundle/sources/cxx-stl/gnu-libstdc++/4.9/include/backward  -isystem /home/lulu/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -D__ANDROID_API__=21 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -frtti -fexceptions -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/lulu/source/github/cryptlib/CryptLibrary/src/main/cpp/aes.cpp",
+					"workingDirectory" : "/home/lulu/source/github/cryptlib/CryptLibrary/.externalNativeBuild/cmake/debug/x86_64"
+				}
+			],
+			"output" : "/home/lulu/source/github/cryptlib/CryptLibrary/build/intermediates/cmake/debug/obj/x86_64/libcrypt1.so",
+			"toolchain" : "15064603666180410331"
+		},
+		"crypto-Debug-x86_64" : 
+		{
+			"abi" : "x86_64",
+			"artifactName" : "crypto",
+			"buildType" : "debug",
+			"output" : "/home/lulu/source/github/cryptlib/CryptLibrary/src/main/jniLibs/x86_64/libcrypto.so",
+			"toolchain" : "15064603666180410331"
+		},
+		"openssl-Debug-x86_64" : 
+		{
+			"abi" : "x86_64",
+			"artifactName" : "openssl",
+			"buildType" : "debug",
+			"output" : "/home/lulu/source/github/cryptlib/CryptLibrary/src/main/jniLibs/x86_64/libssl.so",
+			"toolchain" : "15064603666180410331"
+		}
+	},
+	"toolchains" : 
+	{
+		"15064603666180410331" : 
+		{
+			"cCompilerExecutable" : "/home/lulu/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/home/lulu/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++"
+		}
+	}
+}
