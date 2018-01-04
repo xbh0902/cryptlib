@@ -36,7 +36,7 @@ class Md5Util {
             buf.forEach {
                 var plainText = Integer.toHexString(0xff and it.toInt())
                 if (plainText.length < 2)
-                    plainText += "0"
+                    plainText = "0$plainText"
                 hexString.append(plainText)
             }
             return hexString.toString()

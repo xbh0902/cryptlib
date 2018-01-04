@@ -3,7 +3,6 @@
 buildscript {
     apply from: "versions.gradle"
     repositories {
-        jcenter()
         maven { url "$meven_url" }
     }
     dependencies {
@@ -14,7 +13,6 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
         maven { url "$meven_url" }
     }
 }
