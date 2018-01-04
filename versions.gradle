@@ -1,6 +1,5 @@
 ext {
     gradle_tools_version = '3.0.1'
-    kotlin_version = '1.2.10'
-    meven_url='http://192.168.1.109:8081/repository/android'
-
+    kotlin_version = '1.1.51'
+    maven_url='http://192.168.1.109:8081/repository/android/'
 }
