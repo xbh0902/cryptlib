@@ -3,14 +3,7 @@
 .idea
 *.iml
 build/
-<<<<<<< HEAD
-/gradlew
-/gradlew.bat
-gradle/
-.externalNativeBuild
-=======
 gradlew
 gradlew.bat
 gradle/
-.externalNativeBuild
->>>>>>> dev
+.externalNativeBuild/
