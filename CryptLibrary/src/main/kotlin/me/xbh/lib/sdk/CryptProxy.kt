@@ -24,9 +24,9 @@ class CryptProxy(val target: Any) : InvocationHandler {
     override fun invoke(proxy: Any?, method: Method?, args: Array<out Any>?): Any {
         var result: Any? = null
         try {
-            result = if (args == null){
+            result = if (args == null) {
                 method!!.invoke(target)
-            }else{
+            } else {
                 var mlog = "Method -->${method?.name}("
                 args.forEach {
                     mlog += "arg${args.indexOf(it)}:$it${if (args.indexOf(it) == args.lastIndex) {
@@ -39,12 +39,10 @@ class CryptProxy(val target: Any) : InvocationHandler {
                 Log.d(TAG, mlog)
                 method!!.invoke(target, *args)
             }
-        } catch (e: IllegalAccessException) {
-            e.printStackTrace()
         } catch (e: InvocationTargetException) {
             val throwable = e.targetException
             Log.e(TAG, "Exception in :${method?.name}, message:${throwable.message}")
-        }catch (e: Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
         }
         return result!!
